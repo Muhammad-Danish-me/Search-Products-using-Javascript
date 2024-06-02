@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apna Mobile</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="header">
+        <h1>Apna Mobiles</h1>
+      </div>
+      <div class="filter">
+        <select name="" id="company" onchange="showModel(this)">
+          <option value="">Select Company</option>
+          <option id="iphone" value="iphone">Iphone</option>
+          <option id="samsung" value="samsung">Samsung</option>
+          <option id="infinix" value="infinix">Infinix</option>
+          <!-- <option id="realme" value="realme">Realme</option> -->
+        </select>
+        <select name="" id="selectModel">
+          <option value="">Select Model</option>
+        </select>
+        <!-- iphone model -->
+        <select name="" id="iphoneModel" class="hide">
+          <option value="">Select Model</option>
+          <option value="iphone 11">Iphone 11</option>
+          <option value="iphone 12">Iphone 12</option>
+        </select>
+        <!-- Samsung Model -->
+        <select name="" id="samsungModel" class="hide">
+          <option value="">Select Model</option>
+          <option value="samsung a13">Samsung A13</option>
+          <option value="samsung s20">Samsung S20</option>
+        </select>
+        <!-- infinix model -->
+        <select name="" id="infinixModel" class="hide">
+          <option value="">Select Model</option>
+          <option value="infinix hot 40">Infinix hot 40</option>
+          <option value="infinix note 30">Infinix note 30</option>
+        </select>
+
+        <button type="submit" onclick="showMobiles(this)">Search</button>
+      </div>
+      <div id="mobileDetails"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
