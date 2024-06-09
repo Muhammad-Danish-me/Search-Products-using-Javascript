@@ -1,116 +1,129 @@
-let model = document.getElementById("selectModel");
-let iphoneModel = document.getElementById("iphoneModel");
-let samsungModel = document.getElementById("samsungModel");
-let infinixModel = document.getElementById("infinixModel");
-let products = document.getElementById("products");
-
-let mobilePhones = {
+let mobilephones = {
   iphone: {
-    11: {
+    iphone11: {
       company: "Apple",
       model: "Iphone 11",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "77,000 PKR",
+      color: "Black",
+      image: "images/Iphone 11.jpeg",
     },
-    12: {
+    iphone12: {
       company: "Apple",
       model: "Iphone 12",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "100,000 PKR",
+      color: "Blue",
+      image: "images/Iphone 12.jpg",
     },
   },
   Samsung: {
-    a13: {
+    galaxy_A13: {
       company: "Samusng",
       model: "Samsung A13",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "50,000 PKR",
+      color: "Grey",
+      image: "images/samsung a13.jpeg",
     },
-    s20: {
+    galaxy_S20: {
       company: "Samsung",
       model: "Samsung S20",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "120,000 PKR",
+      color: "Dark Blue",
+      image: "images/Iphone 12.jpg",
     },
   },
   infinix: {
-    hot40Pro: {
+    hot_40_Pro: {
       company: "Infinix",
       model: "infinix Hot 40 Pro",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "45,499 PKR",
+      color: "Blue",
+      image: "images/Iphone 12.jpg",
     },
-    note30: {
+    note_30: {
       company: "infinix",
       model: "Infinix Note 30",
       ram: "8gb",
       rom: "256gb",
       chargingPort: "C-type",
       price: "43,799 PKR",
+      color: "Red",
+      image: "images/Iphone 12.jpg",
     },
   },
 };
-function showModel(answer) {
-  if (answer.value === "") {
-    model.style.display = "inline-block";
-    iphoneModel.style.display = "none";
-    samsungModel.style.display = "none";
-    infinixModel.style.display = "none";
-  } else if (answer.value === "iphone") {
-    model.style.display = "none";
-    iphoneModel.style.display = "inline-block";
-    samsungModel.style.display = "none";
-    infinixModel.style.display = "none";
-  } else if (answer.value === "samsung") {
-    iphoneModel.style.display = "none";
-    model.style.display = "none";
-    samsungModel.style.display = "inline-block";
-    infinixModel.style.display = "none";
-  } else if (answer.value === "infinix") {
-    iphoneModel.style.display = "none";
-    model.style.display = "none";
-    samsungModel.style.display = "none";
-    infinixModel.style.display = "inline-block";
+const companySelect = document.getElementById("company");
+const modelSelect = document.getElementById("model");
+const list = document.getElementById("list");
+for (let company in mobilephones) {
+  let option = `
+        <option value="${company}">${company}</option>
+    `;
+  companySelect.innerHTML += option;
+}
+
+for (let company in mobilephones) {
+  for (let model in mobilephones[company]) {
+    const mobile = mobilephones[company][model];
+    let card = `<div class="card" style="width: 20rem;">
+    <img src="${mobilephones[company][model].image}" class="card-img-top " alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${mobile.model}</h5>
+      <p class="card-text">Price: ${mobile.price}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Storage: ${mobile.ram} / ${mobile.rom}</li>
+      <li class="list-group-item">Color: ${mobile.color}</li>
+      <li class="list-group-item">Charging Port: ${mobile.chargingPort}</li>
+    </ul>
+  </div>`;
+    list.innerHTML += card;
   }
 }
-function showMobiles(show) {
-  if (show.value === "iphone 11") {
-    document.getElementById("mobileDetails").innerHTML = mobilePhones;
+
+function handleSelectCompany() {
+  modelSelect.innerHTML = "";
+  const company = companySelect.value;
+  for (let model in mobilephones[company]) {
+    let option = `
+            <option value="${model}">${model}</option>
+        `;
+    modelSelect.innerHTML += option;
   }
-  // if (answer){
-
-  // }
 }
-// console.log(mobilePhones.Samsung);
-// for(let i = 0; i < mobilePhones.key.length; i++){
-//   console.log(mobilePhones[i])
 
-// }
+function search() {
+  const company = companySelect.value;
+  const model = modelSelect.value;
 
-// console.log(mobilePhones[key]
-// le
-// for (const property in mobilePhones.Samsung.a13) {
-//   console.log(mobilePhones[property])
-// }
+  //TODO: add input validation
 
-// Object.keys(mobilePhones.Samsung.a13).forEach(key => {
-//   // console.log(`${key}: ${mobilePhones.Samsung.a13[key]}`);
-//   // console.log(mobilePhones.Samsung.a13[key])
-// });
-// function showMobiles(type){
-//   console.log(type.parentNode)
-// for (const company in mobilePhones){
-//   console.log(company)
-// }
-
-// }
+  const mobile = mobilephones[company][model];
+  let card = `<div class="card" style="width: 18rem;">
+  <img src="${mobilephones[company][model].image}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${mobile.model}</h5>
+      <p class="card-text">Price: ${mobile.price}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Storage: ${mobile.ram} / ${mobile.rom}</li>
+      <li class="list-group-item">Color: ${mobile.color}</li>
+      <li class="list-group-item">Charging Port: ${mobile.chargingPort}</li>
+    </ul>
+  </div>`;
+  list.innerHTML = card;
+}

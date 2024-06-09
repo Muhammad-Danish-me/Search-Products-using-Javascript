@@ -2,14 +2,10 @@ body {
   margin: 0;
   padding: 0;
 }
-.header h1 {
+ h1 {
   background-color: rgb(163, 163, 239);
   color: black;
   text-align: center;
-}
-.filter {
-  text-align: center;
-  padding: 5px;
 }
 select {
   background-color: black;
@@ -25,9 +21,7 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
-.hide{
-  display: none;
-}
-.show{
-  display: block;
+#list img{
+  width: 300px;
+  height: 300px;
 }
